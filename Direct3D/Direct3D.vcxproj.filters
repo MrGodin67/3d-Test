@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{c7179e4f-fa6a-414d-b355-c27dd7b58c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{870e5310-3f94-4f4f-836d-c3c822ba1d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Camera">
+      <UniqueIdentifier>{e19e8b7e-e1bc-4411-a99a-6e0a17a5134c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Timer">
+      <UniqueIdentifier>{5d2b2764-a1b0-4267-80e2-237fcba1895b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\NewFilter1">
+      <UniqueIdentifier>{1456a0b9-fa7e-4175-8bbb-71d1450f19c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Shaders">
+      <UniqueIdentifier>{c3f36364-7358-4832-8dfd-7bcd55df5578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\The Game">
+      <UniqueIdentifier>{da35504a-6282-4278-9d3e-c35727ca68b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Shaders\Light Fog">
+      <UniqueIdentifier>{432e308b-88e8-487b-8d64-7a924e4ed1db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{ae0e8a7a-814f-4b34-af42-f44326feb8e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Audio">
+      <UniqueIdentifier>{2e361943-2101-4c16-88dd-69ba75c72f0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Model">
+      <UniqueIdentifier>{3376cc64-5209-486b-848b-dc39364307ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Terrain">
+      <UniqueIdentifier>{caeea529-45d1-41dc-9a54-123e7bfbc29d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\MiniMap">
+      <UniqueIdentifier>{918fc940-05f4-4494-8e89-b4df4ad35595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\World Grid">
+      <UniqueIdentifier>{79c15382-013d-49bb-8cbf-362273287d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Object3D">
+      <UniqueIdentifier>{a43c80c2-9891-4ba9-8bc1-97252d2ae72c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\HUD">
+      <UniqueIdentifier>{e2de2f34-46b4-44c1-be43-14e56073befb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Menu%27">
+      <UniqueIdentifier>{778317f6-d330-4ade-8281-f580b442cad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Input">
+      <UniqueIdentifier>{87c81a85-39a4-459e-8f20-68c86c73f9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{a7fd99fc-f72a-4c36-b49f-da11eb6b383f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Gun">
+      <UniqueIdentifier>{81552756-4f57-4b62-af86-d509ea0d5a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Shaders\Instance">
+      <UniqueIdentifier>{540ec9c7-2474-45a3-8277-b5a267b1fedd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Shaders\foliage">
+      <UniqueIdentifier>{f41e082a-a4ae-4f97-9f9d-f906d40423d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Player">
+      <UniqueIdentifier>{33856d4a-b2ed-4502-801f-a4851742bbde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D2D1 Utils">
+      <UniqueIdentifier>{84fce1f8-5229-495c-8e66-a879e3574895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Ammo">
+      <UniqueIdentifier>{0a6a8a16-663a-4a3a-ab9f-da3b6d8a130a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parser">
+      <UniqueIdentifier>{21520bc0-18de-4161-83b0-e2d995ebbcd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\QuadTree">
+      <UniqueIdentifier>{7b1b3101-b98f-4ab3-806a-e2c8b6b1b3a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Shaders\Lines">
+      <UniqueIdentifier>{75e66442-3a43-4ce2-a9a5-0f9d999edf7d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3DWindow.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D_2D.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleTimer.cpp">
+      <Filter>Objects\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera3D_2.cpp">
+      <Filter>Objects\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="IncludePCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Meteor.cpp">
+      <Filter>Engine\The Game</Filter>
+    </ClCompile>
+    <ClCompile Include="FogLightShader.cpp">
+      <Filter>Objects\Shaders\Light Fog</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Locator.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Objects\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="tiny_obj_loader.cc">
+      <Filter>Objects\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainCell.cpp">
+      <Filter>Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="DXErr.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainShader.cpp">
+      <Filter>Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniMap.cpp">
+      <Filter>Objects\MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldGrid.cpp">
+      <Filter>Objects\World Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Object3D.cpp">
+      <Filter>Objects\Object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="FontFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadsUpDisplay.cpp">
+      <Filter>Objects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuBase.cpp">
+      <Filter>Objects\Menu%27</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroMenu.cpp">
+      <Filter>Objects\Menu%27</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="GunBase.cpp">
+      <Filter>Objects\Gun</Filter>
+    </ClCompile>
+    <ClCompile Include="DualGun.cpp">
+      <Filter>Objects\Gun</Filter>
+    </ClCompile>
+    <ClCompile Include="InstanceShader.cpp">
+      <Filter>Objects\Shaders\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="FoliageShader.cpp">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </ClCompile>
+    <ClCompile Include="FoliageClass.cpp">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="D2D1Texture.cpp">
+      <Filter>D2D1 Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Ammo.cpp">
+      <Filter>Objects\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjParser.cpp">
+      <Filter>Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Model2.cpp">
+      <Filter>Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Objects\QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShader.cpp">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="LineModel.cpp">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Direct3DWindow.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Direct3D_2D.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXTex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleTimer.h">
+      <Filter>Objects\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera3D_2.h">
+      <Filter>Objects\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="IncludePCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Meteor.h">
+      <Filter>Engine\The Game</Filter>
+    </ClInclude>
+    <ClInclude Include="FogLightShader.h">
+      <Filter>Objects\Shaders\Light Fog</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Locator.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Objects\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="tiny_obj_loader2.h">
+      <Filter>Objects\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainCell.h">
+      <Filter>Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DXErr.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainShader.h">
+      <Filter>Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChiliWin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniMap.h">
+      <Filter>Objects\MiniMap</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldGrid.h">
+      <Filter>Objects\World Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Object3D.h">
+      <Filter>Objects\Object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="randomGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FontFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadsUpDisplay.h">
+      <Filter>Objects\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBase.h">
+      <Filter>Objects\Menu%27</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroMenu.h">
+      <Filter>Objects\Menu%27</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GunBase.h">
+      <Filter>Objects\Gun</Filter>
+    </ClInclude>
+    <ClInclude Include="DualGun.h">
+      <Filter>Objects\Gun</Filter>
+    </ClInclude>
+    <ClInclude Include="InstanceShader.h">
+      <Filter>Objects\Shaders\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="FoliageShader.h">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </ClInclude>
+    <ClInclude Include="FoliageClass.h">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="D2D1Texture.h">
+      <Filter>D2D1 Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Ammo.h">
+      <Filter>Objects\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="Collidable.h">
+      <Filter>Objects\Object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Objects\Object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjParser.h">
+      <Filter>Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Model2.h">
+      <Filter>Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Objects\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomWorld.h">
+      <Filter>Objects\World Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="LineShader.h">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="LineModel.h">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FogLightPS.hlsl">
+      <Filter>Objects\Shaders\Light Fog</Filter>
+    </None>
+    <None Include="FogLightVS.hlsl">
+      <Filter>Objects\Shaders\Light Fog</Filter>
+    </None>
+    <None Include="terrainPS.ps">
+      <Filter>Objects\Terrain</Filter>
+    </None>
+    <None Include="terrainVS.vs">
+      <Filter>Objects\Terrain</Filter>
+    </None>
+    <None Include="LightInstancePS.hlsl">
+      <Filter>Objects\Shaders\Instance</Filter>
+    </None>
+    <None Include="LightInstanceVS.hlsl">
+      <Filter>Objects\Shaders\Instance</Filter>
+    </None>
+    <None Include="foliage.vs">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </None>
+    <None Include="foliage.ps">
+      <Filter>Objects\Shaders\foliage</Filter>
+    </None>
+    <None Include="colorVS.hlsl">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </None>
+    <None Include="colorPS.hlsl">
+      <Filter>Objects\Shaders\Lines</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ShaderData.txt">
+      <Filter>Engine</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
