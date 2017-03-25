@@ -26,7 +26,7 @@ LineModel::LineModel(std::vector<Geometry::ColorVertex> verts, DirectX::XMFLOAT4
 	for (size_t i = 0; i < verts.size(); i++)
 	{
 		inds.push_back(i);
-		verts[i].color = color;
+		
 	};
 	m_mesh = std::make_unique<MeshFactory::Mesh<Geometry::ColorVertex>>(verts, inds);
 

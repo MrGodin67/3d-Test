@@ -9,13 +9,13 @@
 #include "Collision.h"
 #include <DirectXCollision.h>
 #include "LineShader.h"
+#include <DirectXMath.h>
+using namespace DirectX;
 Meteor::Meteor(Direct3DWindow & window)
 	:Game(window)
 {
 	
-	Node_3D<AABB_3D<float>> aabb;
-
-    aabb.Spawn();
+	  
 	m_test = make_unique<Model2>();
 	m_test->LoadObjectFile("Obj\\room02.obj");
 	ObjParser<VertexPTN>* parser = m_test->getParser();
@@ -43,10 +43,6 @@ Meteor::Meteor(Direct3DWindow & window)
 	RandomGenerator<std::mt19937> randG;
 	
 	m_player = std::make_unique<Player>(m_Camera);
-
-	m_menus[MenuTypes::intro] = std::make_unique<IntroMenu>();
-	m_currentMenu = m_menus[MenuTypes::intro].get();
-
 	HRESULT hr;
 	m_ammo = std::make_unique<WavefrontModel>();
 	hr = m_ammo->LoadFromFile("Obj\\ammo01.obj");
@@ -76,7 +72,6 @@ HRESULT Meteor::OnUpdate(UpdateEventArgs & e)
 		HandlePlayer(e.ElapsedTime);
 		HandleAmmo(e.ElapsedTime);
 		m_hud->Update(e,MiniMap::PlayerData( m_Camera.GetEyePt(), m_Camera.GetWorldAhead(),40.0f));
-		m_hud->UpdateObjectPosition(MiniMap::MiniMapEntityType::Enemy, obj.GetPosition());
 		break;
 	}
 	return S_OK;
@@ -91,17 +86,14 @@ HRESULT Meteor::OnRender(RenderEventArgs & e)
 		switch (m_gameState)
 		{
 		case  menu:
-			m_currentMenu->Render(gfx, m_D2DImageManager->GetImage("menu"));
-
 		break;
 		case running:
 		{
 			//gfx.EnableWireframe();
 			for (auto& it : m_playerAmmo)
-			     gfx.RenderModel(*m_ammo.get(), XMMatrixTranslation(it.GetPosition().x, it.GetPosition().y, it.GetPosition().z), &m_shaderManager->GetShader<FogLightShader>());
+			     gfx.RenderModel(*m_ammo.get(), DirectX::XMMatrixTranslation(it.GetPosition().x, it.GetPosition().y, it.GetPosition().z), &m_shaderManager->GetShader<FogLightShader>());
 			
-			gfx.RenderModel(*m_test.get(), XMMatrixTranslation(0.0f, 0.0f, 0.0f), &m_shaderManager->GetShader<FogLightShader>());
-			//m_roomWorld->Render(&m_shaderManager->GetShader<LineShader>());
+			gfx.RenderModel(*m_test.get(), DirectX::XMMatrixTranslation(0.0f, 0.0f, 0.0f), &m_shaderManager->GetShader<FogLightShader>());
 			dbTri->Rasterize(&m_shaderManager->GetShader<LineShader>(),m_ammo->GetMesh(0)->GetTexture(0));
 			
 			m_hud->Render(gfx);
@@ -145,9 +137,6 @@ void Meteor::OnMouseButtonPressed(MouseButtonEventArgs & e)
 	{
 		case  menu:
 		{
-			UserEventArgs args = m_currentMenu->OnMouseClick(e);
-			if (args.Code == -1)
-				PostQuitMessage(0);
 			break;
 		}
 		case running:
@@ -194,17 +183,17 @@ void Meteor::SetupHeadsUpDisplay()
 void Meteor::SetupCamera()
 {
 	float aspect = (float)(gfx.GetViewport().Width / gfx.GetViewport().Height);
-	m_Camera.SetProjParams(0.25f*XM_PI, aspect, 0.1f, 1000.0f);
-	m_Camera.SetViewParams(XMVectorSet(3.0f, -0.75f, 3.0f, 1.0f), XMVectorSet(0.0f, 0.0f, 1.0f, 1.0f));
+	m_Camera.SetProjParams(0.25f*DirectX::XM_PI, aspect, 0.1f, 1000.0f);
+	m_Camera.SetViewParams(DirectX::XMVectorSet(3.0f, -0.75f, 3.0f, 1.0f), DirectX::XMVectorSet(0.0f, 0.0f, 1.0f, 1.0f));
 	m_Camera.SetRotateButtons(false, false, true);
 	m_Camera.SetEnablePositionMovement(true);
 	m_Camera.SetEnableYAxisMovement(true);
 	m_Camera.SetNumberOfFramesToSmoothMouseData(12);
 	m_Camera.SetScalers(0.004f, 2.0f);
-	m_Camera.SetViewPortCenter(XMFLOAT2((float)(gfx.GetViewport().Width / 2), (float)(gfx.GetViewport().Height / 2)));
+	m_Camera.SetViewPortCenter(DirectX::XMFLOAT2((float)(gfx.GetViewport().Width / 2), (float)(gfx.GetViewport().Height / 2)));
 	m_Camera.SetDrag(true);
 	m_Camera.SetResetCursorAfterMove(true);
-	m_Camera.SetClipToBoundary(true, &XMFLOAT3(2.5f, -0.75f, 2.5f), &XMFLOAT3(57.5f, 50.0f, 57.5f));
+	m_Camera.SetClipToBoundary(true, &DirectX::XMFLOAT3(2.5f, -0.75f, 2.5f), &DirectX::XMFLOAT3(57.5f, 50.0f, 57.5f));
 	m_Camera.FrameMove(0.016f);
 	// update const buffer for shaders
 	Locator::SetProjectionMatrix(m_Camera.GetProjMatrix());
@@ -249,8 +238,6 @@ void Meteor::InitShaders()
 		}
 		m_shaderManager = std::make_unique<ShaderFactory::ShaderManager>();
 		m_shaderManager->AddShader<FogLightShader>(m_shaderInits["FOG_LIGHT"]);
-		m_shaderManager->AddShader<TerrainShader>(m_shaderInits["TERRAIN"]);
-		m_shaderManager->AddShader<FoliageShader>(m_shaderInits["INSTANCE_FOLIAGE"]);
 		m_shaderManager->AddShader<LineShader>(m_shaderInits["LINE_COLOR"]);
 	}
 	else
@@ -265,10 +252,7 @@ void Meteor::InitD2DImages()
 {
 	m_D2DImageManager = std::make_unique<TextureFactory::D2D1ImageManager>();
 	m_D2DImageManager->AddImage(L"menu.png","menu", { 128,128 });
-
-	m_menus[MenuTypes::intro] = std::make_unique<IntroMenu>();
-	m_currentMenu = m_menus[MenuTypes::intro].get();
-	int x = 0;
+	
 }
 
 void Meteor::SetupStaticObjects()
@@ -299,25 +283,31 @@ void Meteor::SetupStaticObjects()
 bool Meteor::HandlePlayer(float dt)
 {
 	m_player->Update(dt, nullptr);// m_terrain.get());
-	XMVECTOR targetP = m_Camera.GetEyePt() + m_Camera.GetWorldAhead() * 20.75f;
+	DirectX::XMVECTOR targetP;
+	targetP = m_Camera.GetEyePt() + m_Camera.GetWorldAhead() * 20.75f;
 	Utilities::BoundingBox box = Utilities::BoundingBox::Make(m_Camera.GetEyePt2(),
-		XMFLOAT3(-0.15f, -0.15f, -0.15f), XMFLOAT3(0.15f, 0.15f, 0.15f));
+		DirectX::XMFLOAT3(-0.15f, -0.15f, -0.15f), DirectX::XMFLOAT3(0.15f, 0.15f, 0.15f));
 	RoomCell* cell = m_roomWorld->getCell(box.center);
-	XMFLOAT3 intersectPt;
+	DirectX::XMFLOAT3 intersectPt;
 	float intersectDistance;
-	static XMFLOAT3 oldPos = m_Camera.GetEyePt2();
+	static DirectX::XMFLOAT3 oldPos = m_Camera.GetEyePt2();
 	bool foundCollision = false;
 	if (cell)
 	{
 		std::vector<DirectX::XMVECTOR> vecs;
 		std::vector<float> dist;
+		float p;
+		DirectX::XMVECTOR n;
 			for (size_t i = 0; i < cell->m_planes.size(); i++)
-			{//, intersectPt, intersectDistance
+			{
 				if (Collision::AABBtoAABB(box, cell->m_planes[i].box))
 				{
 					float nx = cell->m_planes[i].normal.x;
 					float nz = cell->m_planes[i].normal.z;
-					float p;
+					float ny = cell->m_planes[i].normal.y;
+					float vx = m_Camera.GetVelocity().x;
+					float vz = m_Camera.GetVelocity().z;
+					ny = 0.0f;
 					if (nx != 0.0f)
 					{
 						if (nx > 0.0f)
@@ -340,11 +330,9 @@ bool Meteor::HandlePlayer(float dt)
 							p = abs(cell->m_planes[i].box.minPt.z - box.maxPt.z);
 						}
 					}
-					
-
-					DirectX::XMVECTOR pt = m_Camera.GetEyePt();
-					DirectX::XMVECTOR n = DirectX::XMLoadFloat3(&cell->m_planes[i].normal);
-					auto& it = std::find_if(vecs.begin(), vecs.end(),[&n](DirectX::XMVECTOR& a)
+					foundCollision = true;
+					n = DirectX::XMVectorSet(nx, ny, nz,1.0f);// DirectX::XMLoadFloat3(&cell->m_planes[i].normal);
+						auto& it = std::find_if(vecs.begin(), vecs.end(),[&n](DirectX::XMVECTOR& a)
 					{
 						return DirectX::XMVector3Equal(n , a);
 					});
@@ -354,44 +342,35 @@ bool Meteor::HandlePlayer(float dt)
 						dist.push_back(p);
 						foundCollision = true;
 					}
-					
-					/*pt += n * p;
-					DirectX::XMStoreFloat3(&oldPos, pt);
-					m_Camera.SetEye(oldPos.x, oldPos.y, oldPos.z);
-					foundCollision = true;*/
-
-
+										
 				}
-			
-			
+		
 		}
-		if (!foundCollision)
-			oldPos = m_Camera.GetEyePt2();
-		else
+		if (foundCollision)
 		{
-			DirectX::XMVECTOR pt = m_Camera.GetEyePt();
-			DirectX::XMVECTOR n;
-			float dis = 0.0f;
+			float d = 0.0f;
+			XMVECTOR resultN = { 0 };
 			if (vecs.size() > 1)
 			{
-				for (int c = 0; c < vecs.size(); c++)
+				
+				for (size_t i=0;i < vecs.size();i++)
 				{
-					n += vecs[c];
-					dis += dist[c];
+					resultN += vecs[i];
+					d += dist[i];
+					
 				}
-				n = n / vecs.size();
-				n = DirectX::XMVector3Normalize(n);
-				dis = dis / (float)dist.size();
+				resultN /= vecs.size();
+				resultN = XMVector3Normalize(resultN);
 			}
+			DirectX::XMVECTOR pt = m_Camera.GetEyePt();
+		
+			if (vecs.size() > 1)
+				pt += resultN * d;
 			else
-			{
-				n = vecs[0];
-				dis = dist[0];
-			}
-			pt += n * dis;
+			   pt += n * p;
 			DirectX::XMStoreFloat3(&oldPos, pt);
 			m_Camera.SetEye(oldPos.x, oldPos.y, oldPos.z);
-			foundCollision = true;
+			foundCollision = false;
 		}
 	}
 
