@@ -31,7 +31,7 @@ void MiniMap::AddEntity(const MiniMapEntityType entityType, const DirectX::XMVEC
 	if (lenSq < sqr<float>(playerData.range))// * playerData.range)
 	{
 		XMFLOAT2 newPos;
-		newPos.y = frame.top + ((worldAxis.y - XMVectorGetZ(pos)) * scale);
+		newPos.y = frame.top + ((worldAxis.y + XMVectorGetZ(pos)) * scale);
 		newPos.x = frame.left + ((worldAxis.x + XMVectorGetX(pos)) * scale);
 		m_positions[entityType].push_back(newPos);
 	}
@@ -43,7 +43,7 @@ void MiniMap::Update(const PlayerData& in_playerData)
 	XMFLOAT2 newPos;
 	playerData = in_playerData;
 	
-	newPos.y = frame.top + ((worldAxis.y - XMVectorGetZ(playerData.pos)) *scale);
+	newPos.y = frame.top + ((worldAxis.y + XMVectorGetZ(playerData.pos)) *scale);
 	newPos.x = frame.left + (worldAxis.x + (XMVectorGetX(playerData.pos) )* scale);
 	m_positions[Player].push_back(newPos);
 	for (int c = 0; c < 3; c++)
@@ -52,7 +52,7 @@ void MiniMap::Update(const PlayerData& in_playerData)
 		TrianglePts[c].y = newPos.y + arrayTriangle[1][c];
 	}
 	
-	newPos.y = ( newPos.y) + -(XMVectorGetZ(playerData.vel)) * playerData.range;
+	newPos.y = ( newPos.y) + (XMVectorGetZ(playerData.vel)) * playerData.range;
 	newPos.x = ( newPos.x) + XMVectorGetX(playerData.vel) * playerData.range;
 
 	if (newPos.x < frame.left + 10.0f)

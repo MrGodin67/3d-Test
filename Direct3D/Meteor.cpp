@@ -187,7 +187,7 @@ void Meteor::SetupCamera()
 	m_Camera.SetViewParams(DirectX::XMVectorSet(3.0f, -0.75f, 3.0f, 1.0f), DirectX::XMVectorSet(0.0f, 0.0f, 1.0f, 1.0f));
 	m_Camera.SetRotateButtons(false, false, true);
 	m_Camera.SetEnablePositionMovement(true);
-	m_Camera.SetEnableYAxisMovement(true);
+	m_Camera.SetEnableYAxisMovement(false);
 	m_Camera.SetNumberOfFramesToSmoothMouseData(12);
 	m_Camera.SetScalers(0.004f, 2.0f);
 	m_Camera.SetViewPortCenter(DirectX::XMFLOAT2((float)(gfx.GetViewport().Width / 2), (float)(gfx.GetViewport().Height / 2)));

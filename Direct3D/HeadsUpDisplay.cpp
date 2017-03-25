@@ -24,7 +24,7 @@ HeadsUpDisplay::HeadsUpDisplay(D3D11_VIEWPORT& viewPort)
 	rect.right = vpDimensions.right - 10.0f;
 	rect.top = vpDimensions.bottom - 202.0f;
 	rect.bottom = vpDimensions.bottom - 10.0f;
-	minimap = std::make_unique<MiniMap>(rect, DirectX::XMFLOAT2( 0.0f,0.0f ), 0.75f);
+	minimap = std::make_unique<MiniMap>(rect, DirectX::XMFLOAT2( 0.0f,0.0f ), 3.2f);
 	infopanel = std::make_unique<InfoPanel>(infoFrame);
 	
 	
